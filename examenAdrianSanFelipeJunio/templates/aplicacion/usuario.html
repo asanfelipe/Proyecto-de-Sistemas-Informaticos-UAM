@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+{% if error %}
+	{{ error }}<br>
+{% endif %}
+Accesos del usuario {{ nombreU }}
+<table>
+{% for acceso in accesos %}
+	<tr>
+		<th>{{ acceso.fichero.id }}</th>
+		<td>{{ acceso.fichero.nombreF }}</td>
+		<td>{{ acceso.modo }}</td>
+	</tr>
+{% endfor %}
+</table>
+</body>
+</html>

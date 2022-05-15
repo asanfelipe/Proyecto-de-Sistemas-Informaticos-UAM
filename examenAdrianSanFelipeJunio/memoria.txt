@@ -1,0 +1,39 @@
+Memoria de Adrián San Felipe
+Pasos para crear el proyecto:
+
+Paso 1: creamos un proyecto llamado "proyecto" con el comando 
+django-admin.py startproject proyecto. Entramos en la carpeta que se ha creado y
+dentro de esa ejecutamos el comando python3 manage.py startapp aplicacion para crear la 
+aplicacion de nombre "aplicacion" en este caso.
+
+Paso 2: creamos una base de datos que se llame "examen" con el comando 
+createdb -U alumnodb -h localhost examen
+Tambien debemos modificar la variable DATABASES de settings.py para que use postgres
+
+Paso 3: modificamos el fichero models.py y añadimos las clases que se nos piden en el
+enunciado. Tambien debemos modificar admin.py para hacer las clases visibles en la página
+de administración de django. Para entrar en esta página necesitamos crear un superusuario
+con el siguiente comando: python3 manage.py createsuperuser
+
+Paso 4: en la carpeta de la aplicacion, creamos la siguiente ruta:
+/management/commands para que poblar sea un comando de manage.py
+Creamos poblar.py en la carpeta mencionada anteriormentee introducimos los datos que se nos 
+indican en el enunciado.
+
+Paso 5: poblamos la base de datos con el comando: python3 manage.py poblar y observamos
+en la página de administración que todos los datos están correctos.
+Tambien podemos entrar en la base de datos con el comando: psql -U alumnodb -d examen
+y observar desde ahi que todos los datos se han introducido correctamente.
+
+Paso 6: debemos editar los ficheros urls.py y views.py, tanto de la aplicacion como del 
+proyecto (hay que crear urls.py de la aplicacion ya que por defecto no está creado) y añadir
+en una carpeta llamada templates la pagina html que se nos indica. En settings.py tambien
+tenemos que añadir la ruta en la que se encuentran las templates, que en nuestro caso es
+esta: TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates') y en DIRS añadir TEMPLATE_DIR
+entre los corchetes
+
+Paso 7: modificamos el archivo tests.py con las pruebas que se nos indican en el enunciado,
+si las pruebas son correctas al finalizar debería dar un mensaje de OK. Este archivo se
+encuentra en la carpeta de la aplicación, y se ejecuta con el siguiente comando:
+python3 manage.py test aplicacion.tests
+
